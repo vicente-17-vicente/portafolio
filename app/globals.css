@@ -1,0 +1,214 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* Mejorando contraste de card para garantizar accesibilidad */
+.dark {
+  --background: #1e1e2f;
+  --foreground: #ffffff;
+  --card: #2a2a3e;
+  --card-foreground: #ffffff;
+  --popover: rgba(255, 255, 255, 0.2);
+  --popover-foreground: #ffffff;
+  --primary: #007bff;
+  --primary-foreground: #ffffff;
+  --secondary: #00ff88;
+  --secondary-foreground: #000000;
+  --muted: rgba(255, 255, 255, 0.2);
+  --muted-foreground: rgba(255, 255, 255, 0.85);
+  --accent: #007bff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4c4c;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: rgba(0, 123, 255, 0.5);
+  --chart-1: #007bff;
+  --chart-2: #00ff88;
+  --chart-3: #ff4c4c;
+  --chart-4: #ffffff;
+  --chart-5: #1e1e2f;
+  --sidebar: #1e1e2f;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #007bff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #00ff88;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: rgba(255, 255, 255, 0.2);
+  --sidebar-ring: rgba(0, 123, 255, 0.5);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Estilos optimizados para accesibilidad máxima */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-nav-solid {
+    background: #1e1e2f;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-hover {
+    transition: all 0.3s ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #007bff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-safe {
+    color: #007bff;
+    font-weight: 700;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Agregando estilos profesionales para la foto de perfil */
+  .professional-avatar {
+    background: linear-gradient(135deg, #007bff, #00ff88);
+    padding: 3px;
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .professional-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+  }
+
+  .professional-photo {
+    filter: contrast(1.1) brightness(1.05) saturate(0.9);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .professional-photo:hover {
+    filter: contrast(1.2) brightness(1.1) saturate(1);
+  }
+}
